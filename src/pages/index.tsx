@@ -110,7 +110,7 @@ const Home: NextPage = () => {
 export default Home;
 
 // Inline styles
-const styles {
+const styles = {
   container: {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
