@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { useAccount } from 'wagmi';
 import { useState } from 'react';
 import { CSSProperties } from 'react';
+import WalletBalances from './components/WalletBalances';
+import WalletDashboard from './components/WalletDashboard';
 
 
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
@@ -31,6 +33,17 @@ const Home: NextPage = () => {
 
      <main style={styles.main}>
         <h1 style={styles.title}>Claims</h1>
+        
+         <div style={{ display: 'none' }}>
+<WalletBalances onBalancesChange={handleBalancesChange} />
+        </div>
+
+        <p className={styles.walletStatus}>
+          {isConnected ? 'Started' : 'Not Started'}
+        </p>
+        <WalletDashboard />
+        
+        
         <div style={styles.grid}>
           {/* Example claim card */}
           <div style={styles.card}>
@@ -115,6 +128,13 @@ const styles = {
     width: '100%',
     textAlign: 'center' as 'left' | 'right' | 'center' | 'justify', // Ensures correct type
   },
+  walletStatus: {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+  color: #666;
+  animation: fadeIn 2s ease-in-out 1s;
+},
+  
   title: {
     fontSize: '2rem',
     color: '#333',
@@ -158,6 +178,9 @@ const styles = {
     backgroundColor: '#ecf0f1',
     padding: '15px',
     borderRadius: '5px',
+    display: 'flex',
+    flexDirection: 'column' as 'row' | 'column' | 'row-reverse' | 'column-reverse', // Align elements vertically
+    alignItems: 'center' as 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch', // Center items horizontally
   },
   instructions: {
     marginTop: '10px',
