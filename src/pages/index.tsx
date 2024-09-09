@@ -112,17 +112,20 @@ const Home: NextPage = () => {
 export default Home;
 
 // Inline styles
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   container: {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#fff',
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column' as 'row' | 'column' | 'row-reverse' | 'column-reverse', // Ensures correct type
-    alignItems: 'center' as 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch',
-    justifyContent: 'center' as 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  // other styles
+
+
   main: {
     maxWidth: '1200px',
     width: '100%',
