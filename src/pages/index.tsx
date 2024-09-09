@@ -103,15 +103,14 @@ export default Home;
 const styles = {
   container: {
     padding: '20px',
-    fontFamily: 'Arial',
+    fontFamily: 'Arial, sans-serif',
     backgroundColor: '#fff',
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column', // Ensure this is one of the allowed values
+    flexDirection: 'column' as 'row' | 'column' | 'row-reverse' | 'column-reverse', // Ensures correct type
     alignItems: 'center',
     justifyContent: 'center',
   }
-
 
 
 
