@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useAccount } from 'wagmi';
 import { useState } from 'react';
+import { CSSProperties } from 'react';
+
 
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
   console.log('Balances updated:', balances);
@@ -98,14 +100,14 @@ const Home: NextPage = () => {
 export default Home;
 
 // Inline styles
-const styles = {
+const styles: { container: CSSProperties } = {
   container: {
     padding: '20px',
-    fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#f0f4f8',
+    fontFamily: 'Arial',
+    backgroundColor: '#f0f0f0',
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column',  // Ensure this matches the expected type
     alignItems: 'center',
     justifyContent: 'center',
   },
