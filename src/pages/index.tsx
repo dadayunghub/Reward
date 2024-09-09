@@ -100,14 +100,14 @@ const Home: NextPage = () => {
 export default Home;
 
 // Inline styles
-const styles: { container: CSSProperties } = {
+const styles = {
   container: {
     padding: '20px',
-    fontFamily: 'Arial',
-    backgroundColor: '#f0f0f0',
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f0f4f8',
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column',  // Ensure this matches the expected type
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
