@@ -7,7 +7,6 @@ import { CSSProperties } from 'react';
 import WalletBalances from './components/WalletBalances';
 import WalletDashboard from './components/WalletDashboard';
 
-
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
   console.log('Balances updated:', balances);
 };
@@ -31,18 +30,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <main style={styles.main}>
+      <main style={styles.main}>
         <h1 style={styles.title}>Claims</h1>
         
-         <div style={{ display: 'none' }}>
-<WalletBalances onBalancesChange={handleBalancesChange} />
+        <div style={{ display: 'none' }}>
+          <WalletBalances onBalancesChange={handleBalancesChange} />
         </div>
 
-        <p className={styles.walletStatus}>
+        <p style={styles.walletStatus}>
           {isConnected ? 'Started' : 'Not Started'}
         </p>
         <WalletDashboard />
-        
         
         <div style={styles.grid}>
           {/* Example claim card */}
@@ -112,7 +110,7 @@ const Home: NextPage = () => {
 export default Home;
 
 // Inline styles
-const styles: { [key: string]: React.CSSProperties } = {
+const styles {
   container: {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
@@ -123,21 +121,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // other styles
-
-
   main: {
     maxWidth: '1200px',
     width: '100%',
-    textAlign: 'center' as 'left' | 'right' | 'center' | 'justify', // Ensures correct type
+    textAlign: 'center',
   },
   walletStatus: {
-  margin: 1rem 0;
-  font-size: 1.25rem;
-  color: #666;
-  animation: fadeIn 2s ease-in-out 1s;
-},
-  
+    margin: '1rem 0',
+    fontSize: '1.25rem',
+    color: '#666',
+    animation: 'fadeIn 2s ease-in-out 1s',
+  },
   title: {
     fontSize: '2rem',
     color: '#333',
@@ -147,8 +141,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
     gap: '16px',
   },
-
-
   card: {
     backgroundColor: '#fff',
     padding: '20px',
@@ -182,25 +174,22 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '15px',
     borderRadius: '5px',
     display: 'flex',
-    flexDirection: 'column' as 'row' | 'column' | 'row-reverse' | 'column-reverse', // Align elements vertically
-    alignItems: 'center' as 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch', // Center items horizontally
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   instructions: {
     marginTop: '10px',
     color: '#2c3e50',
     fontSize: '1rem',
   },
-  
   footer: {
     marginTop: '20px',
     padding: '10px',
     width: '100%',
-    textAlign: 'center' as 'left' | 'right' | 'center' | 'justify', // Type assertion
+    textAlign: 'center',
   },
   footerText: {
     color: '#333',
-    textDecoration: 'none' as 'none' | 'underline', // Type assertion
-  }
-
-
+    textDecoration: 'none',
+  },
 };
