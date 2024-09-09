@@ -29,9 +29,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main style={styles.main}>
+     <main style={styles.main}>
         <h1 style={styles.title}>Claims</h1>
-
         <div style={styles.grid}>
           {/* Example claim card */}
           <div style={styles.card}>
@@ -108,29 +107,25 @@ const styles = {
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column' as 'row' | 'column' | 'row-reverse' | 'column-reverse', // Ensures correct type
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-
-
-
+    alignItems: 'center' as 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch',
+    justifyContent: 'center' as 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly',
+  },
   main: {
-    maxWidth: '1000px',
+    maxWidth: '1200px',
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center' as 'left' | 'right' | 'center' | 'justify', // Ensures correct type
   },
   title: {
-    fontSize: '3rem',
-    color: '#2c3e50',
-    marginBottom: '40px',
-    fontWeight: 'bold',
+    fontSize: '2rem',
+    color: '#333',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '20px',
-    width: '100%',
-  },
+    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+    gap: '16px',
+  }
+
+
   card: {
     backgroundColor: '#fff',
     padding: '20px',
