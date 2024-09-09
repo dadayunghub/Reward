@@ -123,7 +123,7 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
     gap: '16px',
-  }
+  },
 
 
   card: {
