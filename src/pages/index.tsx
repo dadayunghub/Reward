@@ -102,15 +102,17 @@ export default Home;
 // Inline styles
 const styles = {
   container: {
-    padding: '10px',
+    padding: '20px',
     fontFamily: 'Arial',
     backgroundColor: '#fff',
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'row', // Adjust this value as needed
+    flexDirection: 'column', // Ensure this is one of the allowed values
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
+
+
 
 
   main: {
