@@ -153,9 +153,6 @@ const styles = {
     fontSize: '1rem',
     transition: 'background-color 0.3s ease',
   },
-  buttonHover: {
-    backgroundColor: '#2980b9',
-  },
   details: {
     marginTop: '20px',
     backgroundColor: '#ecf0f1',
