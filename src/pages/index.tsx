@@ -164,15 +164,17 @@ const styles = {
     color: '#2c3e50',
     fontSize: '1rem',
   },
+  
   footer: {
-    marginTop: '50px',
-    padding: '20px 0',
+    marginTop: '20px',
+    padding: '10px',
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center' as 'left' | 'right' | 'center' | 'justify', // Type assertion
   },
   footerText: {
-    fontSize: '1rem',
-    color: '#7f8c8d',
-    textDecoration: 'none',
-  },
+    color: '#333',
+    textDecoration: 'none' as 'none' | 'underline', // Type assertion
+  }
+
+
 };
