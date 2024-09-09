@@ -3,9 +3,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useAccount } from 'wagmi';
 import { useState } from 'react';
-import { CSSProperties } from 'react';
-import WalletBalances from './components/WalletBalances';
-import WalletDashboard from './components/WalletDashboard';
 
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
   console.log('Balances updated:', balances);
@@ -109,22 +106,22 @@ const Home: NextPage = () => {
 
 export default Home;
 
-// Inline styles
+// Inline styles with corrected types
 const styles = {
   container: {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#fff',
     minHeight: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex' as 'flex',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center' as 'center',
+    justifyContent: 'center' as 'center',
   },
   main: {
     maxWidth: '1200px',
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center' as 'center',
   },
   walletStatus: {
     margin: '1rem 0',
@@ -137,7 +134,7 @@ const styles = {
     color: '#333',
   },
   grid: {
-    display: 'grid',
+    display: 'grid' as 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
     gap: '16px',
   },
@@ -173,9 +170,9 @@ const styles = {
     backgroundColor: '#ecf0f1',
     padding: '15px',
     borderRadius: '5px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: 'flex' as 'flex',
+    flexDirection: 'column' as 'column',
+    alignItems: 'center' as 'center',
   },
   instructions: {
     marginTop: '10px',
@@ -186,10 +183,10 @@ const styles = {
     marginTop: '20px',
     padding: '10px',
     width: '100%',
-    textAlign: 'center',
+    textAlign: 'center' as 'center',
   },
   footerText: {
     color: '#333',
-    textDecoration: 'none',
+    textDecoration: 'none' as 'none',
   },
 };
