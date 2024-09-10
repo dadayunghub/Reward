@@ -3,6 +3,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useAccount } from 'wagmi';
 import { useState } from 'react';
+import WalletBalances from './components/WalletBalances';
+import WalletDashboard from './components/WalletDashboard';
 
 const handleBalancesChange = (balances: { ethBalance: string; maticBalance: string }) => {
   console.log('Balances updated:', balances);
