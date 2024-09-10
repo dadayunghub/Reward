@@ -73,7 +73,7 @@ const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => 
         <p>Inactive wallet, kindly connect an active wallet to claim your reward.</p>
         <p>
           Click to contact the moderator:{" "}
-          <a href="https://t.me/kanau" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/kanau" target="_blank" style="color:blue" rel="noopener noreferrer">
             Moderator
           </a>
         </p>
