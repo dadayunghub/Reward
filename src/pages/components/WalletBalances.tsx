@@ -70,14 +70,20 @@ const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => 
   if (allBalancesZero) {
     return (
       <div className={styles.inactiveWallet}>
-        <p>Inactive wallet, kindly connect an active wallet to claim your reward.</p>
-        <p>
-          Click to contact the moderator:{" "}
-          <a href="https://t.me/kanau" target="_blank" style="color:blue" rel="noopener noreferrer">
-            Moderator
-          </a>
-        </p>
-      </div>
+  <p>Inactive wallet, kindly connect an active wallet to claim your reward.</p>
+  <p>
+    Click to contact the moderator:{" "}
+    <a
+      href="https://t.me/kanau"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.moderatorButton}
+    >
+      Moderator
+    </a>
+  </p>
+</div>
+
     );
   }
 

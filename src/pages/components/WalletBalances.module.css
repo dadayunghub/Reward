@@ -17,6 +17,25 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
+.moderatorButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.moderatorButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
 .walletAddress {
   font-size: 1rem;
   color: #333;
