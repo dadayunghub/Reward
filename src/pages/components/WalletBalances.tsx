@@ -3,7 +3,20 @@ import { useBalance, useAccount } from 'wagmi';
 import { mainnet, polygon, bsc, sepolia, optimism, arbitrum, base, zkSync } from 'wagmi/chains';
 import styles from './WalletBalances.module.css';
 
-const WalletBalances = ({ onBalancesChange }) => {
+interface WalletBalancesProps {
+  onBalancesChange: (balances: {
+    ethBalance: string;
+    maticBalance: string;
+    bnbBalance: string;
+    sepoliaBalance: string;
+    optimismBalance: string;
+    arbitrumBalance: string;
+    baseBalance: string;
+    zkSyncBalance: string;
+  }) => void;
+}
+
+const WalletBalances: React.FC<WalletBalancesProps> = ({ onBalancesChange }) => {
   const { address, isConnected } = useAccount();
 
   // Fetch balances on various chains
